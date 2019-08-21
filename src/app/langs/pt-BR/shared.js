@@ -4,7 +4,7 @@ export default {
   nav: {
     home: 'Work',
     team: 'Team',
-    ccontact: 'Contact'
+    contact: 'Contact'
   },
 
   notifications: {

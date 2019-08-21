@@ -1,18 +1,29 @@
 import React from 'react';
 import i18next from 'i18next';
+import { Link } from 'react-router-dom';
 import { Route } from 'react-router';
-import { Layout } from 'antd';
 import { renderComponent } from '../shared';
-import { Title } from './styles';
+import LogoSVG from 'app/assets/images/logo.svg';
+import {
+  Container, Header, Content, Logo, LogoContainer, NavContainer, NavItem
+} from './styles';
 
-export default ({ component, ...rest }) => (
-  <Layout style={{ minHeight: '100vh' }}>
-    <Layout.Header>
-      <Title>{i18next.t('shared.applicationName')}</Title>
-    </Layout.Header>
+export default ({ component, ...props }) => (
+  <Container>
+    <Header>
+      <LogoContainer>
+        <Logo src={LogoSVG} alt={i18next.t('shared.applicationName')}/>
+      </LogoContainer>
 
-    <Layout.Content>
-      <Route {...rest} render={renderComponent(component, rest)} />
-    </Layout.Content>
-  </Layout>
+      <NavContainer defaultSelectedKeys={[props.path]}>
+        <NavItem key="/"><Link to="/">{i18next.t('shared.nav.home')}</Link></NavItem>
+        <NavItem key="/team"><Link to="/team">{i18next.t('shared.nav.team')}</Link></NavItem>
+        <NavItem key="/contact"><Link to="/contact">{i18next.t('shared.nav.contact')}</Link></NavItem>
+      </NavContainer>
+    </Header>
+
+    <Content>
+      <Route {...props} render={renderComponent(component, props)} />
+    </Content>
+  </Container>
 );
