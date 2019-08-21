@@ -1,10 +1,16 @@
 export default {
   applicationName: 'Goes to eleven UX',
 
-  nav: {
-    home: 'Work',
-    team: 'Team',
-    contact: 'Contact'
+  layout: {
+    nav: {
+      home: 'Work',
+      team: 'Team'
+    },
+
+    footer: {
+      title: "Let's talk",
+      location: "Rio, Brazil"
+    }
   },
 
   notifications: {
